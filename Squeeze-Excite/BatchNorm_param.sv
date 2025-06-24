@@ -32,11 +32,11 @@ module BatchNorm_param #(
             var_reg  <= variance;
             gamma_reg<= gamma;
             beta_reg <= beta;
-            if (variance != 0) begin
-                out_reg <= (gamma * (in_data - mean) / variance) + beta;
-            end else begin
-                out_reg <= 0;
-            end
+            automatic logic signed [31:0] num;
+            automatic logic signed [15:0] denom;
+            num = (in_data - mean) * gamma;
+            denom = (variance != 0) ? variance : 16'sd1;
+            out_reg <= (num / denom) + beta;
             valid_reg <= 1;
         end
     end

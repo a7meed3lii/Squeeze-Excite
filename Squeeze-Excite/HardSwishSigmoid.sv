@@ -21,8 +21,16 @@ module HardSwishSigmoid #(
             hswish_reg <= 0;
             valid_reg <= 0;
         end else begin
+            // Hard sigmoid: (x + 3).clamp(0,6) / 6 using Q8.8 fixed point
             in_reg <= in_data;
-            relu6_reg <= (in_data + 3 < 0) ? 0 : ((in_data + 3 > 6) ? 6 : in_data + 3);
+            automatic logic signed [DATA_WIDTH-1:0] temp;
+            temp = in_data + 16'sd768; // add 3.0
+            if (temp < 0)
+                relu6_reg <= 0;
+            else if (temp > 16'sd1536)
+                relu6_reg <= 16'sd1536; // clamp to 6.0
+            else
+                relu6_reg <= temp;
             hsigmoid_reg <= relu6_reg / 6;
             hswish_reg <= (in_data * relu6_reg) / 6;
             valid_reg <= 1;
