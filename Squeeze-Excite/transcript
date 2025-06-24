@@ -1,0 +1,506 @@
+# do run_all_tb.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+# Start time: 15:06:05 on Jun 24,2025
+# vlog AdaptiveAvgPool2d_1x1.sv BatchNorm_param.sv Conv2D_param.sv Conv2D_specific.sv HardSwishSigmoid.sv ReLU_param.sv tb_AdaptiveAvgPool2d_1x1.sv tb_BatchNorm_param.sv tb_Conv2D_param.sv tb_Conv2D_specific.sv tb_HardSwishSigmoid.sv tb_ReLU_param.sv tb_top_all_layers.sv top_all_layers.sv 
+# -- Compiling module AdaptiveAvgPool2d_1x1
+# -- Compiling module BatchNorm_param
+# -- Compiling module Conv2D_param
+# -- Compiling module Conv2D_specific
+# -- Compiling module HardSwishSigmoid
+# -- Compiling module ReLU_param
+# -- Compiling module tb_AdaptiveAvgPool2d_1x1
+# -- Compiling module tb_BatchNorm_param
+# -- Compiling module tb_Conv2D_param
+# -- Compiling module tb_Conv2D_specific
+# -- Compiling module tb_HardSwishSigmoid
+# -- Compiling module tb_ReLU_param
+# -- Compiling module tb_top_all_layers
+# -- Compiling module top_all_layers
+# 
+# Top level modules:
+# 	tb_AdaptiveAvgPool2d_1x1
+# 	tb_BatchNorm_param
+# 	tb_Conv2D_param
+# 	tb_Conv2D_specific
+# 	tb_HardSwishSigmoid
+# 	tb_ReLU_param
+# 	tb_top_all_layers
+# End time: 15:06:06 on Jun 24,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vsim -voptargs="+acc" work.tb_top_all_layers 
+# Start time: 15:06:06 on Jun 24,2025
+# ** Note: (vsim-8009) Loading existing optimized design _opt1
+# //  Questa Sim-64
+# //  Version 2021.1 win64 Jan 19 2021
+# //
+# //  Copyright 1991-2021 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.tb_top_all_layers(fast)
+# Loading work.top_all_layers(fast)
+# 
+# 🚀 Starting Unified SE Module Verification Tests
+#       3660
+# 
+# --- Test 1: Basic SE Functionality Test ---
+# Loading first conv kernel (16→4 channels)...
+# ✅ First conv kernel loaded
+# Loading second conv kernel (4→16 channels)...
+# ✅ Second conv kernel loaded
+# Feeding input data (16 channels × 64 pixels)...
+#   [Cycle 2053] Global pooling channel 0
+#   [Cycle 2055] Global pooling channel 1
+#   [Cycle 2057] Global pooling channel 2
+#   [Cycle 2059] Global pooling channel 3
+#   [Cycle 2061] Global pooling channel 4
+#   [Cycle 2063] Global pooling channel 5
+#   [Cycle 2065] Global pooling channel 6
+#   [Cycle 2067] Global pooling channel 7
+#   [Cycle 2069] Global pooling channel 8
+#   [Cycle 2071] Global pooling channel 9
+#   [Cycle 2073] Global pooling channel 10
+#   [Cycle 2075] Global pooling channel 11
+#   [Cycle 2077] Global pooling channel 12
+#   [Cycle 2079] Global pooling channel 13
+#   [Cycle 2081] Global pooling channel 14
+#   [Cycle 2083] Global pooling channel 15
+#   [Cycle 2085] BatchNorm1 channel 0
+#   [Cycle 2087] BatchNorm1 channel 1
+#   [Cycle 2089] BatchNorm1 channel 2
+#   [Cycle 2091] BatchNorm1 channel 3
+#   [Cycle 2093] BatchNorm1 channel 4
+#   [Cycle 2095] BatchNorm1 channel 5
+#   [Cycle 2097] BatchNorm1 channel 6
+#   [Cycle 2099] BatchNorm1 channel 7
+#   [Cycle 2101] BatchNorm1 channel 8
+#   [Cycle 2103] BatchNorm1 channel 9
+#   [Cycle 2105] BatchNorm1 channel 10
+#   [Cycle 2107] BatchNorm1 channel 11
+#   [Cycle 2109] BatchNorm1 channel 12
+#   [Cycle 2111] BatchNorm1 channel 13
+#   [Cycle 2113] BatchNorm1 channel 14
+#   [Cycle 2115] BatchNorm1 channel 15
+#   [Cycle 2117] ReLU channel 0
+#   [Cycle 2119] ReLU channel 1
+#   [Cycle 2121] ReLU channel 2
+#   [Cycle 2123] ReLU channel 3
+#   [Cycle 2125] ReLU channel 4
+#   [Cycle 2127] ReLU channel 5
+#   [Cycle 2129] ReLU channel 6
+#   [Cycle 2131] ReLU channel 7
+#   [Cycle 2133] ReLU channel 8
+#   [Cycle 2135] ReLU channel 9
+#   [Cycle 2137] ReLU channel 10
+#   [Cycle 2139] ReLU channel 11
+#   [Cycle 2141] ReLU channel 12
+#   [Cycle 2143] ReLU channel 13
+#   [Cycle 2145] ReLU channel 14
+#   [Cycle 2147] ReLU channel 15
+#   [Cycle 2149] Conv1 output channel 0
+#   [Cycle 2151] Conv1 output channel 1
+#   [Cycle 2153] Conv1 output channel 2
+#   [Cycle 2155] Conv1 output channel 3
+#   [Cycle 2157] Conv2 output channel 0
+#   [Cycle 2159] Conv2 output channel 1
+#   [Cycle 2161] Conv2 output channel 2
+#   [Cycle 2163] Conv2 output channel 3
+#   [Cycle 2165] Conv2 output channel 4
+#   [Cycle 2167] Conv2 output channel 5
+#   [Cycle 2169] Conv2 output channel 6
+#   [Cycle 2171] Conv2 output channel 7
+#   [Cycle 2173] Conv2 output channel 8
+#   [Cycle 2175] Conv2 output channel 9
+#   [Cycle 2177] Conv2 output channel 10
+#   [Cycle 2179] Conv2 output channel 11
+#   [Cycle 2181] Conv2 output channel 12
+#   [Cycle 2183] Conv2 output channel 13
+#   [Cycle 2185] Conv2 output channel 14
+#   [Cycle 2187] Conv2 output channel 15
+#   [Cycle 2189] BatchNorm2 channel 0
+#   [Cycle 2191] BatchNorm2 channel 1
+#   [Cycle 2193] BatchNorm2 channel 2
+#   [Cycle 2195] BatchNorm2 channel 3
+#   [Cycle 2197] BatchNorm2 channel 4
+#   [Cycle 2199] BatchNorm2 channel 5
+#   [Cycle 2201] BatchNorm2 channel 6
+#   [Cycle 2203] BatchNorm2 channel 7
+#   [Cycle 2205] BatchNorm2 channel 8
+#   [Cycle 2207] BatchNorm2 channel 9
+#   [Cycle 2209] BatchNorm2 channel 10
+#   [Cycle 2211] BatchNorm2 channel 11
+#   [Cycle 2213] BatchNorm2 channel 12
+#   [Cycle 2215] BatchNorm2 channel 13
+#   [Cycle 2217] BatchNorm2 channel 14
+#   [Cycle 2219] BatchNorm2 channel 15
+#   [Cycle 2221] HardSigmoid channel 0
+#   [Cycle 2223] HardSigmoid channel 1
+#   [Cycle 2225] HardSigmoid channel 2
+#   [Cycle 2227] HardSigmoid channel 3
+#   [Cycle 2229] HardSigmoid channel 4
+#   [Cycle 2231] HardSigmoid channel 5
+#   [Cycle 2233] HardSigmoid channel 6
+#   [Cycle 2235] HardSigmoid channel 7
+#   [Cycle 2237] HardSigmoid channel 8
+#   [Cycle 2239] HardSigmoid channel 9
+#   [Cycle 2241] HardSigmoid channel 10
+#   [Cycle 2243] HardSigmoid channel 11
+#   [Cycle 2245] HardSigmoid channel 12
+#   [Cycle 2247] HardSigmoid channel 13
+#   [Cycle 2249] HardSigmoid channel 14
+#   [Cycle 2251] HardSigmoid channel 15
+#   [Cycle 2253] Final multiply channel 0, output: 0x0000
+#   [Cycle 2255] Final multiply channel 1, output: 0x0000
+#   [Cycle 2257] Final multiply channel 2, output: 0x0000
+#   [Cycle 2259] Final multiply channel 3, output: 0x0000
+#   [Cycle 2261] Final multiply channel 4, output: 0x0001
+#   [Cycle 2263] Final multiply channel 5, output: 0x0000
+#   [Cycle 2265] Final multiply channel 6, output: 0x0001
+#   [Cycle 2267] Final multiply channel 7, output: 0x0000
+#   [Cycle 2269] Final multiply channel 8, output: 0x0001
+#   [Cycle 2271] Final multiply channel 9, output: 0x0001
+#   [Cycle 2273] Final multiply channel 10, output: 0x0000
+#   [Cycle 2275] Final multiply channel 11, output: 0x0000
+#   [Cycle 2277] Final multiply channel 12, output: 0x0000
+#   [Cycle 2279] Final multiply channel 13, output: 0x0000
+#   [Cycle 2281] Final multiply channel 14, output: 0x0001
+#   [Cycle 2283] Final multiply channel 15, output: 0x0000
+#   [Cycle 2285] Output channel 0: 0x0001
+#   [Cycle 2287] Output channel 1: 0x0000
+#   [Cycle 2289] Output channel 2: 0x0000
+#   [Cycle 2291] Output channel 3: 0x0000
+#   [Cycle 2293] Output channel 4: 0x0001
+#   [Cycle 2295] Output channel 5: 0x0000
+#   [Cycle 2297] Output channel 6: 0x0001
+#   [Cycle 2299] Output channel 7: 0x0000
+#   [Cycle 2301] Output channel 8: 0x0001
+#   [Cycle 2303] Output channel 9: 0x0001
+#   [Cycle 2305] Output channel 10: 0x0000
+# ✅ Input data fed to SE module
+# Waiting for SE processing...
+#   [Cycle 2307] Output channel 11: 0x0000
+#   [Cycle 2308] Output channel 12: 0x0000
+#   [Cycle 2309] Output channel 13: 0x0000
+#   [Cycle 2310] Output channel 14: 0x0001
+#   [Cycle 2311] Output channel 15: 0x0000
+#   [Cycle 2400] Collecting input data...
+#   [Cycle 2500] Collecting input data...
+# SE Module State: COLLECT_INPUT
+# Final Output: 0x0000 (0)
+# ❌ FAIL: SE module output is invalid (0x0000)
+# 
+# --- Test 2: SE Test with Non-Zero Mean ---
+# Loading first conv kernel (16→4 channels)...
+# ✅ First conv kernel loaded
+# Loading second conv kernel (4→16 channels)...
+# ✅ Second conv kernel loaded
+# Feeding input data (16 channels × 64 pixels)...
+#   [Cycle 2053] Global pooling channel 0
+#   [Cycle 2055] Global pooling channel 1
+#   [Cycle 2057] Global pooling channel 2
+#   [Cycle 2059] Global pooling channel 3
+#   [Cycle 2061] Global pooling channel 4
+#   [Cycle 2063] Global pooling channel 5
+#   [Cycle 2065] Global pooling channel 6
+#   [Cycle 2067] Global pooling channel 7
+#   [Cycle 2069] Global pooling channel 8
+#   [Cycle 2071] Global pooling channel 9
+#   [Cycle 2073] Global pooling channel 10
+#   [Cycle 2075] Global pooling channel 11
+#   [Cycle 2077] Global pooling channel 12
+#   [Cycle 2079] Global pooling channel 13
+#   [Cycle 2081] Global pooling channel 14
+#   [Cycle 2083] Global pooling channel 15
+#   [Cycle 2085] BatchNorm1 channel 0
+#   [Cycle 2087] BatchNorm1 channel 1
+#   [Cycle 2089] BatchNorm1 channel 2
+#   [Cycle 2091] BatchNorm1 channel 3
+#   [Cycle 2093] BatchNorm1 channel 4
+#   [Cycle 2095] BatchNorm1 channel 5
+#   [Cycle 2097] BatchNorm1 channel 6
+#   [Cycle 2099] BatchNorm1 channel 7
+#   [Cycle 2101] BatchNorm1 channel 8
+#   [Cycle 2103] BatchNorm1 channel 9
+#   [Cycle 2105] BatchNorm1 channel 10
+#   [Cycle 2107] BatchNorm1 channel 11
+#   [Cycle 2109] BatchNorm1 channel 12
+#   [Cycle 2111] BatchNorm1 channel 13
+#   [Cycle 2113] BatchNorm1 channel 14
+#   [Cycle 2115] BatchNorm1 channel 15
+#   [Cycle 2117] ReLU channel 0
+#   [Cycle 2119] ReLU channel 1
+#   [Cycle 2121] ReLU channel 2
+#   [Cycle 2123] ReLU channel 3
+#   [Cycle 2125] ReLU channel 4
+#   [Cycle 2127] ReLU channel 5
+#   [Cycle 2129] ReLU channel 6
+#   [Cycle 2131] ReLU channel 7
+#   [Cycle 2133] ReLU channel 8
+#   [Cycle 2135] ReLU channel 9
+#   [Cycle 2137] ReLU channel 10
+#   [Cycle 2139] ReLU channel 11
+#   [Cycle 2141] ReLU channel 12
+#   [Cycle 2143] ReLU channel 13
+#   [Cycle 2145] ReLU channel 14
+#   [Cycle 2147] ReLU channel 15
+#   [Cycle 2149] Conv1 output channel 0
+#   [Cycle 2151] Conv1 output channel 1
+#   [Cycle 2153] Conv1 output channel 2
+#   [Cycle 2155] Conv1 output channel 3
+#   [Cycle 2157] Conv2 output channel 0
+#   [Cycle 2159] Conv2 output channel 1
+#   [Cycle 2161] Conv2 output channel 2
+#   [Cycle 2163] Conv2 output channel 3
+#   [Cycle 2165] Conv2 output channel 4
+#   [Cycle 2167] Conv2 output channel 5
+#   [Cycle 2169] Conv2 output channel 6
+#   [Cycle 2171] Conv2 output channel 7
+#   [Cycle 2173] Conv2 output channel 8
+#   [Cycle 2175] Conv2 output channel 9
+#   [Cycle 2177] Conv2 output channel 10
+#   [Cycle 2179] Conv2 output channel 11
+#   [Cycle 2181] Conv2 output channel 12
+#   [Cycle 2183] Conv2 output channel 13
+#   [Cycle 2185] Conv2 output channel 14
+#   [Cycle 2187] Conv2 output channel 15
+#   [Cycle 2189] BatchNorm2 channel 0
+#   [Cycle 2191] BatchNorm2 channel 1
+#   [Cycle 2193] BatchNorm2 channel 2
+#   [Cycle 2195] BatchNorm2 channel 3
+#   [Cycle 2197] BatchNorm2 channel 4
+#   [Cycle 2199] BatchNorm2 channel 5
+#   [Cycle 2201] BatchNorm2 channel 6
+#   [Cycle 2203] BatchNorm2 channel 7
+#   [Cycle 2205] BatchNorm2 channel 8
+#   [Cycle 2207] BatchNorm2 channel 9
+#   [Cycle 2209] BatchNorm2 channel 10
+#   [Cycle 2211] BatchNorm2 channel 11
+#   [Cycle 2213] BatchNorm2 channel 12
+#   [Cycle 2215] BatchNorm2 channel 13
+#   [Cycle 2217] BatchNorm2 channel 14
+#   [Cycle 2219] BatchNorm2 channel 15
+#   [Cycle 2221] HardSigmoid channel 0
+#   [Cycle 2223] HardSigmoid channel 1
+#   [Cycle 2225] HardSigmoid channel 2
+#   [Cycle 2227] HardSigmoid channel 3
+#   [Cycle 2229] HardSigmoid channel 4
+#   [Cycle 2231] HardSigmoid channel 5
+#   [Cycle 2233] HardSigmoid channel 6
+#   [Cycle 2235] HardSigmoid channel 7
+#   [Cycle 2237] HardSigmoid channel 8
+#   [Cycle 2239] HardSigmoid channel 9
+#   [Cycle 2241] HardSigmoid channel 10
+#   [Cycle 2243] HardSigmoid channel 11
+#   [Cycle 2245] HardSigmoid channel 12
+#   [Cycle 2247] HardSigmoid channel 13
+#   [Cycle 2249] HardSigmoid channel 14
+#   [Cycle 2251] HardSigmoid channel 15
+#   [Cycle 2253] Final multiply channel 0, output: 0x0000
+#   [Cycle 2255] Final multiply channel 1, output: 0x0000
+#   [Cycle 2257] Final multiply channel 2, output: 0x0000
+#   [Cycle 2259] Final multiply channel 3, output: 0x0001
+#   [Cycle 2261] Final multiply channel 4, output: 0x0000
+#   [Cycle 2263] Final multiply channel 5, output: 0x0000
+#   [Cycle 2265] Final multiply channel 6, output: 0x0000
+#   [Cycle 2267] Final multiply channel 7, output: 0x0000
+#   [Cycle 2269] Final multiply channel 8, output: 0x0001
+#   [Cycle 2271] Final multiply channel 9, output: 0x0000
+#   [Cycle 2273] Final multiply channel 10, output: 0x0000
+#   [Cycle 2275] Final multiply channel 11, output: 0x0000
+#   [Cycle 2277] Final multiply channel 12, output: 0x0000
+#   [Cycle 2279] Final multiply channel 13, output: 0x0000
+#   [Cycle 2281] Final multiply channel 14, output: 0x0000
+#   [Cycle 2283] Final multiply channel 15, output: 0x0000
+#   [Cycle 2285] Output channel 0: 0x0001
+#   [Cycle 2287] Output channel 1: 0x0000
+#   [Cycle 2289] Output channel 2: 0x0000
+#   [Cycle 2291] Output channel 3: 0x0001
+#   [Cycle 2293] Output channel 4: 0x0000
+#   [Cycle 2295] Output channel 5: 0x0000
+#   [Cycle 2297] Output channel 6: 0x0000
+#   [Cycle 2299] Output channel 7: 0x0000
+#   [Cycle 2301] Output channel 8: 0x0001
+#   [Cycle 2303] Output channel 9: 0x0000
+#   [Cycle 2305] Output channel 10: 0x0000
+# ✅ Input data fed to SE module
+# Waiting for SE processing...
+#   [Cycle 2307] Output channel 11: 0x0000
+#   [Cycle 2308] Output channel 12: 0x0000
+#   [Cycle 2309] Output channel 13: 0x0000
+#   [Cycle 2310] Output channel 14: 0x0000
+#   [Cycle 2311] Output channel 15: 0x0000
+#   [Cycle 2400] Collecting input data...
+#   [Cycle 2500] Collecting input data...
+# SE Module State: COLLECT_INPUT
+# Final Output: 0x0000 (0)
+# ❌ FAIL: SE module output is invalid (0x0000)
+# 
+# --- Test 3: SE Test with 2x Scaling ---
+# Loading first conv kernel (16→4 channels)...
+# ✅ First conv kernel loaded
+# Loading second conv kernel (4→16 channels)...
+# ✅ Second conv kernel loaded
+# Feeding input data (16 channels × 64 pixels)...
+#   [Cycle 2053] Global pooling channel 0
+#   [Cycle 2055] Global pooling channel 1
+#   [Cycle 2057] Global pooling channel 2
+#   [Cycle 2059] Global pooling channel 3
+#   [Cycle 2061] Global pooling channel 4
+#   [Cycle 2063] Global pooling channel 5
+#   [Cycle 2065] Global pooling channel 6
+#   [Cycle 2067] Global pooling channel 7
+#   [Cycle 2069] Global pooling channel 8
+#   [Cycle 2071] Global pooling channel 9
+#   [Cycle 2073] Global pooling channel 10
+#   [Cycle 2075] Global pooling channel 11
+#   [Cycle 2077] Global pooling channel 12
+#   [Cycle 2079] Global pooling channel 13
+#   [Cycle 2081] Global pooling channel 14
+#   [Cycle 2083] Global pooling channel 15
+#   [Cycle 2085] BatchNorm1 channel 0
+#   [Cycle 2087] BatchNorm1 channel 1
+#   [Cycle 2089] BatchNorm1 channel 2
+#   [Cycle 2091] BatchNorm1 channel 3
+#   [Cycle 2093] BatchNorm1 channel 4
+#   [Cycle 2095] BatchNorm1 channel 5
+#   [Cycle 2097] BatchNorm1 channel 6
+#   [Cycle 2099] BatchNorm1 channel 7
+#   [Cycle 2101] BatchNorm1 channel 8
+#   [Cycle 2103] BatchNorm1 channel 9
+#   [Cycle 2105] BatchNorm1 channel 10
+#   [Cycle 2107] BatchNorm1 channel 11
+#   [Cycle 2109] BatchNorm1 channel 12
+#   [Cycle 2111] BatchNorm1 channel 13
+#   [Cycle 2113] BatchNorm1 channel 14
+#   [Cycle 2115] BatchNorm1 channel 15
+#   [Cycle 2117] ReLU channel 0
+#   [Cycle 2119] ReLU channel 1
+#   [Cycle 2121] ReLU channel 2
+#   [Cycle 2123] ReLU channel 3
+#   [Cycle 2125] ReLU channel 4
+#   [Cycle 2127] ReLU channel 5
+#   [Cycle 2129] ReLU channel 6
+#   [Cycle 2131] ReLU channel 7
+#   [Cycle 2133] ReLU channel 8
+#   [Cycle 2135] ReLU channel 9
+#   [Cycle 2137] ReLU channel 10
+#   [Cycle 2139] ReLU channel 11
+#   [Cycle 2141] ReLU channel 12
+#   [Cycle 2143] ReLU channel 13
+#   [Cycle 2145] ReLU channel 14
+#   [Cycle 2147] ReLU channel 15
+#   [Cycle 2149] Conv1 output channel 0
+#   [Cycle 2151] Conv1 output channel 1
+#   [Cycle 2153] Conv1 output channel 2
+#   [Cycle 2155] Conv1 output channel 3
+#   [Cycle 2157] Conv2 output channel 0
+#   [Cycle 2159] Conv2 output channel 1
+#   [Cycle 2161] Conv2 output channel 2
+#   [Cycle 2163] Conv2 output channel 3
+#   [Cycle 2165] Conv2 output channel 4
+#   [Cycle 2167] Conv2 output channel 5
+#   [Cycle 2169] Conv2 output channel 6
+#   [Cycle 2171] Conv2 output channel 7
+#   [Cycle 2173] Conv2 output channel 8
+#   [Cycle 2175] Conv2 output channel 9
+#   [Cycle 2177] Conv2 output channel 10
+#   [Cycle 2179] Conv2 output channel 11
+#   [Cycle 2181] Conv2 output channel 12
+#   [Cycle 2183] Conv2 output channel 13
+#   [Cycle 2185] Conv2 output channel 14
+#   [Cycle 2187] Conv2 output channel 15
+#   [Cycle 2189] BatchNorm2 channel 0
+#   [Cycle 2191] BatchNorm2 channel 1
+#   [Cycle 2193] BatchNorm2 channel 2
+#   [Cycle 2195] BatchNorm2 channel 3
+#   [Cycle 2197] BatchNorm2 channel 4
+#   [Cycle 2199] BatchNorm2 channel 5
+#   [Cycle 2201] BatchNorm2 channel 6
+#   [Cycle 2203] BatchNorm2 channel 7
+#   [Cycle 2205] BatchNorm2 channel 8
+#   [Cycle 2207] BatchNorm2 channel 9
+#   [Cycle 2209] BatchNorm2 channel 10
+#   [Cycle 2211] BatchNorm2 channel 11
+#   [Cycle 2213] BatchNorm2 channel 12
+#   [Cycle 2215] BatchNorm2 channel 13
+#   [Cycle 2217] BatchNorm2 channel 14
+#   [Cycle 2219] BatchNorm2 channel 15
+#   [Cycle 2221] HardSigmoid channel 0
+#   [Cycle 2223] HardSigmoid channel 1
+#   [Cycle 2225] HardSigmoid channel 2
+#   [Cycle 2227] HardSigmoid channel 3
+#   [Cycle 2229] HardSigmoid channel 4
+#   [Cycle 2231] HardSigmoid channel 5
+#   [Cycle 2233] HardSigmoid channel 6
+#   [Cycle 2235] HardSigmoid channel 7
+#   [Cycle 2237] HardSigmoid channel 8
+#   [Cycle 2239] HardSigmoid channel 9
+#   [Cycle 2241] HardSigmoid channel 10
+#   [Cycle 2243] HardSigmoid channel 11
+#   [Cycle 2245] HardSigmoid channel 12
+#   [Cycle 2247] HardSigmoid channel 13
+#   [Cycle 2249] HardSigmoid channel 14
+#   [Cycle 2251] HardSigmoid channel 15
+#   [Cycle 2253] Final multiply channel 0, output: 0x0000
+#   [Cycle 2255] Final multiply channel 1, output: 0x0000
+#   [Cycle 2257] Final multiply channel 2, output: 0x0000
+#   [Cycle 2259] Final multiply channel 3, output: 0x0000
+#   [Cycle 2261] Final multiply channel 4, output: 0x0000
+#   [Cycle 2263] Final multiply channel 5, output: 0x0000
+#   [Cycle 2265] Final multiply channel 6, output: 0x0001
+#   [Cycle 2267] Final multiply channel 7, output: 0x0001
+#   [Cycle 2269] Final multiply channel 8, output: 0x0000
+#   [Cycle 2271] Final multiply channel 9, output: 0x0000
+#   [Cycle 2273] Final multiply channel 10, output: 0x0000
+#   [Cycle 2275] Final multiply channel 11, output: 0x0001
+#   [Cycle 2277] Final multiply channel 12, output: 0x0000
+#   [Cycle 2279] Final multiply channel 13, output: 0x0000
+#   [Cycle 2281] Final multiply channel 14, output: 0x0000
+#   [Cycle 2283] Final multiply channel 15, output: 0x0000
+#   [Cycle 2285] Output channel 0: 0x0001
+#   [Cycle 2287] Output channel 1: 0x0000
+#   [Cycle 2289] Output channel 2: 0x0000
+#   [Cycle 2291] Output channel 3: 0x0000
+#   [Cycle 2293] Output channel 4: 0x0000
+#   [Cycle 2295] Output channel 5: 0x0000
+#   [Cycle 2297] Output channel 6: 0x0001
+#   [Cycle 2299] Output channel 7: 0x0001
+#   [Cycle 2301] Output channel 8: 0x0000
+#   [Cycle 2303] Output channel 9: 0x0000
+#   [Cycle 2305] Output channel 10: 0x0000
+# ✅ Input data fed to SE module
+# Waiting for SE processing...
+#   [Cycle 2307] Output channel 11: 0x0001
+#   [Cycle 2308] Output channel 12: 0x0000
+#   [Cycle 2309] Output channel 13: 0x0000
+#   [Cycle 2310] Output channel 14: 0x0000
+#   [Cycle 2311] Output channel 15: 0x0000
+#   [Cycle 2400] Collecting input data...
+#   [Cycle 2500] Collecting input data...
+# SE Module State: COLLECT_INPUT
+# Final Output: 0x0000 (0)
+# ❌ FAIL: SE module output is invalid (0x0000)
+#       3670
+#                  SE MODULE TEST SUMMARY
+#       3660
+# Total Tests:    3
+# Tests Passed:   0
+# Tests Failed:   3
+# Pass Rate:      0.0%
+#       3660
+# ⚠️  SOME TESTS FAILED. Please check SE Module implementation.
+#       3660
+# ** Note: $finish    : tb_top_all_layers.sv(165)
+#    Time: 40620 ns  Iteration: 1  Instance: /tb_top_all_layers
+# End time: 15:06:06 on Jun 24,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
