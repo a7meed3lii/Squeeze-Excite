@@ -33,7 +33,6 @@ module top_all_layers(
     logic [15:0] conv2_out [IN_CHANNELS-1:0];
     logic [15:0] bn2_out [IN_CHANNELS-1:0];
     logic [15:0] hsigmoid_out [IN_CHANNELS-1:0];
-    logic [15:0] original_input [IN_CHANNELS-1:0];
     
     // Convolution Kernels
     logic [15:0] kernel1 [REDUCED_CHANNELS-1:0][IN_CHANNELS-1:0];
@@ -69,7 +68,6 @@ module top_all_layers(
                 conv2_out[i] <= 0;
                 bn2_out[i] <= 0;
                 hsigmoid_out[i] <= 0;
-                original_input[i] <= 0;
                 for (int j = 0; j < POOL_SIZE; j++) begin
                     input_buffer[i][j] <= 0;
                 end
@@ -137,7 +135,6 @@ module top_all_layers(
                         sum = sum + input_buffer[ch_cnt][p];
                     end
                     pooled[ch_cnt] <= sum[21:6]; // Divide by 64 using bit shift
-                    original_input[ch_cnt] <= sum[21:6]; // Store for final multiply
                     
                     if (ch_cnt == IN_CHANNELS-1) begin
                         ch_cnt <= 0;
@@ -146,13 +143,12 @@ module top_all_layers(
                 end
                 
                 BATCH_NORM1: begin
-                    // BatchNorm with safe division
-                    if (variance1 != 0 && variance1 != 16'hXXXX) begin
-                        automatic logic signed [31:0] temp = ((pooled[ch_cnt] - mean1) * gamma1);
-                        bn1_out[ch_cnt] <= temp[31:16] + beta1; // Use upper bits to avoid overflow
-                    end else begin
-                        bn1_out[ch_cnt] <= pooled[ch_cnt]; // Pass-through if variance is invalid
-                    end
+                    // BatchNorm: (x - mean) * gamma / variance + beta
+                    automatic logic signed [31:0] num;
+                    automatic logic signed [15:0] denom;
+                    num = (pooled[ch_cnt] - mean1) * gamma1;
+                    denom = (variance1 != 0) ? variance1 : 16'h0001;
+                    bn1_out[ch_cnt] <= (num / denom) + beta1;
                     
                     if (ch_cnt == IN_CHANNELS-1) begin
                         ch_cnt <= 0;
@@ -198,12 +194,11 @@ module top_all_layers(
                 end
                 
                 BATCH_NORM2: begin
-                    if (variance2 != 0 && variance2 != 16'hXXXX) begin
-                        automatic logic signed [31:0] temp = ((conv2_out[ch_cnt] - mean2) * gamma2);
-                        bn2_out[ch_cnt] <= temp[31:16] + beta2;
-                    end else begin
-                        bn2_out[ch_cnt] <= conv2_out[ch_cnt];
-                    end
+                    automatic logic signed [31:0] num;
+                    automatic logic signed [15:0] denom;
+                    num = (conv2_out[ch_cnt] - mean2) * gamma2;
+                    denom = (variance2 != 0) ? variance2 : 16'h0001;
+                    bn2_out[ch_cnt] <= (num / denom) + beta2;
                     
                     if (ch_cnt == IN_CHANNELS-1) begin
                         ch_cnt <= 0;
@@ -212,42 +207,46 @@ module top_all_layers(
                 end
                 
                 HARD_SIGMOID: begin
-                    // Hard Sigmoid: clip(x + 3, 0, 6) / 6
-                    automatic logic signed [16:0] temp = bn2_out[ch_cnt] + 17'h0003;
-                    if (temp[16] || temp < 0) begin
-                        hsigmoid_out[ch_cnt] <= 0; // Negative -> 0
-                    end else if (temp > 17'h0006) begin
-                        hsigmoid_out[ch_cnt] <= 16'h2AAA; // Clamp to ~1.0 in fixed point
+                    // Hard Sigmoid implementation matching PyTorch: (x+3).clamp(0,6)/6
+                    automatic logic signed [17:0] temp;
+                    temp = bn2_out[ch_cnt] + 18'sd768; // add 3.0 in Q8.8
+                    if (temp < 0) begin
+                        hsigmoid_out[ch_cnt] <= 0;
+                    end else if (temp > 18'sd1536) begin
+                        hsigmoid_out[ch_cnt] <= 16'h0100; // 1.0 in Q8.8
                     end else begin
-                        hsigmoid_out[ch_cnt] <= {temp[15:0], 2'b00} / 6; // Scale properly
+                        hsigmoid_out[ch_cnt] <= temp / 6;
                     end
                     
                     if (ch_cnt == IN_CHANNELS-1) begin
                         ch_cnt <= 0;
                         state <= MULTIPLY;
+                        pix_cnt <= 0;
                     end else ch_cnt <= ch_cnt + 1;
                 end
-                
+
                 MULTIPLY: begin
-                    // SE Final Output: original_input * hsigmoid_out
-                    automatic logic [31:0] result = original_input[ch_cnt] * hsigmoid_out[ch_cnt];
-                    out_data <= result[23:8]; // Scale result appropriately
-                    
-                    if (ch_cnt == IN_CHANNELS-1) begin
-                        ch_cnt <= 0;
-                        state <= OUTPUT;
-                    end else ch_cnt <= ch_cnt + 1;
+                    // Multiply stored feature map with channel gate
+                    automatic logic [31:0] result;
+                    result = input_buffer[ch_cnt][pix_cnt] * hsigmoid_out[ch_cnt];
+                    out_data <= result[23:8];
+
+                    if (pix_cnt == POOL_SIZE-1) begin
+                        pix_cnt <= 0;
+                        if (ch_cnt == IN_CHANNELS-1) begin
+                            ch_cnt <= 0;
+                            state <= OUTPUT;
+                        end else begin
+                            ch_cnt <= ch_cnt + 1;
+                        end
+                    end else begin
+                        pix_cnt <= pix_cnt + 1;
+                    end
                 end
-                
+
                 OUTPUT: begin
-                    // Final output phase
-                    automatic logic [31:0] final_result = original_input[ch_cnt] * hsigmoid_out[ch_cnt];
-                    out_data <= final_result[23:8];
-                    
-                    if (ch_cnt == IN_CHANNELS-1) begin
-                        ch_cnt <= 0;
-                        state <= IDLE; // Return to IDLE when complete
-                    end else ch_cnt <= ch_cnt + 1;
+                    // Processing complete
+                    state <= IDLE;
                 end
             endcase
         end
